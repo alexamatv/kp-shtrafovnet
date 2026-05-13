@@ -897,7 +897,12 @@
   a.site-link:hover { color: var(--green-dark); }
 
   .qr-box.has-qr { border: none !important; padding: 0 !important; background: transparent !important; }
-  .qr-box.has-qr canvas { width: 22mm !important; height: 22mm !important; display: block; }
+  .qr-box.has-qr canvas,
+  .qr-box.has-qr svg {
+    width: 22mm !important;
+    height: 22mm !important;
+    display: block;
+  }
 
   #kp-manager-bar {
     background: #fff; border: 1px solid #DCDCDC; border-radius: 999px;
@@ -1570,7 +1575,7 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 <script>
 function __kpInitManager() {
   window.KP_MANAGERS = [
@@ -1626,13 +1631,17 @@ function __kpInitManager() {
   var COMMON_EMAIL = 'hello@shtrafovnet.ru';
 
   function renderQR(box, text) {
-    if (!text || typeof QRCode === 'undefined') return;
+    if (!text || typeof qrcode === 'undefined') return;
     while (box.firstChild) box.removeChild(box.firstChild);
     box.classList.add('has-qr');
-    QRCode.toCanvas(text, { width: 220, margin: 1, errorCorrectionLevel: 'M' }, function(err, canvas) {
-      if (err) { console.error('QR err', err); return; }
-      box.appendChild(canvas);
-    });
+    try {
+      var qr = qrcode(0, 'M');
+      qr.addData(String(text));
+      qr.make();
+      box.innerHTML = qr.createSvgTag({ scalable: true, margin: 0 });
+    } catch (e) {
+      console.error('QR render err', e);
+    }
   }
 
   var select = document.getElementById('kp-mgr-select');
