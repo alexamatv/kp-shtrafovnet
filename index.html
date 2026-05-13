@@ -547,6 +547,8 @@
     margin-bottom: 3mm;
   }
   .addr-card.accent .addr-head { color: var(--green-dark); }
+  .addr-card.accent .deflist { border-top-color: var(--green-mint); }
+  .addr-card.accent .deflist > * { border-bottom-color: var(--green-mint); }
 
   /* ── Tables ── */
   table.t {
@@ -1493,7 +1495,10 @@
         <tbody>
           <tr>
             <td class="ch">Телефон</td>
-            <td class="cv"><span class="field" data-mgr-key="phone">+7 (499) 286-87-07</span></td>
+            <td class="cv">
+              <div data-mgr-row="phoneOffice"><span class="field" data-mgr-key="phoneOffice">+7 (499) 286-87-07</span></div>
+              <div data-mgr-row="phoneMobile"><span class="field" data-mgr-key="phoneMobile">мобильный менеджера</span></div>
+            </td>
             <td class="cw">Звонок руководителю проекта в рабочее время.</td>
           </tr>
           <tr class="zebra">
@@ -1529,7 +1534,7 @@
         <div class="qr">
           <div class="qr-box" data-qr="manager-phone">QR · звонок</div>
           <div class="qr-lbl">Звонок менеджеру</div>
-          <div class="qr-val"><span data-mgr-key="phone-display">+7 (499) 286-87-07</span></div>
+          <div class="qr-val"><span data-mgr-key="phonePrimary-display">+7 (499) 286-87-07</span></div>
         </div>
         <div class="qr">
           <div class="qr-box" data-qr="manager-email">QR · письмо</div>
@@ -1570,13 +1575,56 @@
 <script>
 (function() {
   window.KP_MANAGERS = [
-    { id: 'mgr1', name: 'Иванов Иван Иванович',     position: 'Менеджер по работе с клиентами', phone: '+7 (499) 286-87-07, доб. 101', email: 'ivanov@shtrafovnet.ru',     telegram: '@ivanov_shn',     qrData: 'https://t.me/ivanov_shn' },
-    { id: 'mgr2', name: 'Петрова Анна Сергеевна',   position: 'Старший менеджер',               phone: '+7 (499) 286-87-07, доб. 102', email: 'petrova@shtrafovnet.ru',    telegram: '@petrova_shn',    qrData: 'https://t.me/petrova_shn' },
-    { id: 'mgr3', name: 'Сидоров Алексей Петрович', position: 'Менеджер ключевых клиентов',     phone: '+7 (499) 286-87-07, доб. 103', email: 'sidorov@shtrafovnet.ru',    telegram: '@sidorov_shn',    qrData: 'https://t.me/sidorov_shn' },
-    { id: 'mgr4', name: 'Кузнецова Елена Викторовна', position: 'Менеджер крупных автопарков', phone: '+7 (499) 286-87-07, доб. 104', email: 'kuznetsova@shtrafovnet.ru', telegram: '@kuznetsova_shn', qrData: 'https://t.me/kuznetsova_shn' }
+    {
+      id: 'kotov',
+      name: 'Константин Котов',
+      position: 'Руководитель службы клиентского сервиса',
+      phoneOffice: '',
+      phoneMobile: '+7 919 237 00 77',
+      phonePrimary: '+7 919 237 00 77',
+      email: 'hello@shtrafovnet.ru',
+      telegram: '@Kotov_KA',
+      qrData: 'https://t.me/Kotov_KA'
+    },
+    {
+      id: 'urazumanov',
+      name: 'Марат Уразуманов',
+      position: 'Отдел клиентского сервиса',
+      phoneOffice: '+7 499 286 87 07, доб. 102',
+      phoneMobile: '+7 917 740 91 29',
+      phonePrimary: '+7 917 740 91 29',
+      email: 'marat_u@shtrafovnet.ru',
+      telegram: '',
+      qrData: ''
+    },
+    {
+      id: 'kamaletdinova',
+      name: 'Наталья Камалетдинова',
+      position: 'Отдел клиентского сервиса',
+      phoneOffice: '+7 499 286 87 07, доб. 109',
+      phoneMobile: '+7 927 436 37 06',
+      phonePrimary: '+7 927 436 37 06',
+      email: 'kamaletdinova.natalya@shtrafovnet.ru',
+      telegram: '@natalikamaletdinova',
+      qrData: 'https://t.me/natalikamaletdinova'
+    },
+    {
+      id: 'kovalev',
+      name: 'Алексей Ковалёв',
+      position: 'Отдел клиентского сервиса',
+      phoneOffice: '+7 499 286 87 07, доб. 11',
+      phoneMobile: '+7 996 166 06 35',
+      phonePrimary: '+7 996 166 06 35',
+      email: 'alex_k@shtrafovnet.ru',
+      telegram: '@koval971',
+      qrData: 'https://t.me/koval971'
+    }
   ];
 
   var SITE_URL = 'https://www.shtrafovnet.ru';
+  var COMMON_PHONE = '+7 (499) 286-87-07';
+  var COMMON_PHONE_TEL = '+74992868707';
+  var COMMON_EMAIL = 'hello@shtrafovnet.ru';
 
   function renderQR(box, text) {
     if (!text || typeof QRCode === 'undefined') return;
@@ -1612,25 +1660,56 @@
   }
   if (savedMgr) select.value = savedMgr;
 
+  function clearBox(box) {
+    box.classList.remove('has-qr');
+    while (box.firstChild) box.removeChild(box.firstChild);
+  }
+
+  function setPlaceholder(box, text) {
+    clearBox(box);
+    box.textContent = text;
+  }
+
+  function telDigits(phone) {
+    return 'tel:' + (phone || '').replace(/[^+0-9]/g, '');
+  }
+
   function applyManager(mgrId) {
     var mgr = window.KP_MANAGERS.find(function(m) { return m.id === mgrId; });
+
     document.querySelectorAll('[data-mgr-key]').forEach(function(el) {
       var key = el.dataset.mgrKey;
+      var row = el.closest('[data-mgr-row]');
+
       if (!mgr) {
         if (el.dataset.kpPlaceholder) {
           el.textContent = el.dataset.kpPlaceholder;
           el.classList.add('kp-placeholder');
         }
+        if (row) row.style.display = '';
         return;
       }
+
       var val = '';
       if (key === 'name') val = mgr.name + ' · ' + mgr.position;
-      else if (key === 'phone' || key === 'phone-display') val = mgr.phone;
+      else if (key === 'phoneOffice') val = mgr.phoneOffice;
+      else if (key === 'phoneMobile') val = mgr.phoneMobile;
+      else if (key === 'phonePrimary' || key === 'phonePrimary-display') val = mgr.phonePrimary;
       else if (key === 'email' || key === 'email-display') val = mgr.email;
       else if (key === 'telegram') val = mgr.telegram;
+
       if (val) {
         el.textContent = val;
         el.classList.remove('kp-placeholder');
+        if (row) row.style.display = '';
+      } else {
+        // Empty field for this manager — for wrapped rows hide the row, otherwise keep placeholder editable
+        if (row) {
+          row.style.display = 'none';
+        } else if (el.dataset.kpPlaceholder) {
+          el.textContent = el.dataset.kpPlaceholder;
+          el.classList.add('kp-placeholder');
+        }
       }
     });
 
@@ -1638,16 +1717,24 @@
       var type = box.dataset.qr;
       if (type === 'site') {
         renderQR(box, SITE_URL);
-      } else if (mgr) {
-        if (type === 'manager-telegram') renderQR(box, mgr.qrData);
-        else if (type === 'manager-phone') renderQR(box, 'tel:' + mgr.phone.replace(/[^+0-9]/g, ''));
-        else if (type === 'manager-email') renderQR(box, 'mailto:' + mgr.email);
-      } else {
-        box.classList.remove('has-qr');
-        while (box.firstChild) box.removeChild(box.firstChild);
-        if (type === 'manager-telegram') box.textContent = 'QR · контакт';
-        else if (type === 'manager-phone') box.textContent = 'QR · звонок';
-        else if (type === 'manager-email') box.textContent = 'QR · письмо';
+        return;
+      }
+      if (type === 'manager-phone') {
+        renderQR(box, mgr ? telDigits(mgr.phonePrimary) : 'tel:' + COMMON_PHONE_TEL);
+        return;
+      }
+      if (type === 'manager-email') {
+        renderQR(box, 'mailto:' + (mgr ? mgr.email : COMMON_EMAIL));
+        return;
+      }
+      if (type === 'manager-telegram') {
+        if (mgr && mgr.qrData) {
+          renderQR(box, mgr.qrData);
+        } else if (mgr) {
+          setPlaceholder(box, 'Свяжитесь с менеджером напрямую');
+        } else {
+          setPlaceholder(box, 'QR · контакт');
+        }
       }
     });
 
