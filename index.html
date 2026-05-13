@@ -777,46 +777,37 @@
   .signoff .signline {
     margin-top: 4mm;
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: 6mm;
+    min-height: 36mm;
   }
   .signoff .sigwell {
     flex: 1;
-    border-bottom: 1.5px solid var(--ink);
-    height: 14mm;
+    height: 18mm;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .signoff .sigwell .signature {
-    position: absolute;
-    bottom: -2mm;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60mm;
-    height: 18mm;
+    width: 95%;
+    height: 100%;
+    display: block;
     pointer-events: none;
   }
   .signoff .sigwell .signature text {
     font-family: 'Caveat', 'Brush Script MT', cursive;
   }
-  .signoff .sigwell::before {
-    content: "Подпись";
-    position: absolute;
-    bottom: -5mm;
-    left: 0;
-    font-size: 8pt;
-    color: var(--muted-2);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
   .signoff .stamp {
-    width: 24mm;
-    height: 24mm;
+    width: 36mm;
+    height: 36mm;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: visible;
     transform: rotate(-8deg);
+    flex-shrink: 0;
   }
   .signoff .stamp svg {
     width: 100%;
@@ -1563,12 +1554,11 @@
         </div>
         <div class="signbody">
           <div style="font-size:9pt;color:var(--muted);font-weight:600;">С уважением,</div>
-          <div class="sname">Синюков Иван Сергеевич</div>
-          <div class="stitle">Генеральный директор · ИП Синюков И.С.</div>
+          <div class="stitle">Генеральный директор</div>
           <div class="signline">
             <div class="sigwell">
-              <svg class="signature" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                <text x="100" y="42" text-anchor="middle" font-size="40" font-weight="600" fill="#1d3a91" transform="rotate(-6 100 30)">Синюков</text>
+              <svg class="signature" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <text x="200" y="55" text-anchor="middle" font-size="48" font-weight="600" fill="#1d3a91" transform="rotate(-5 200 40)">Синюков Иван Сергеевич</text>
               </svg>
             </div>
             <div class="stamp">
