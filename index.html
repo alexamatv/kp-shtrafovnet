@@ -2,6 +2,7 @@
 <html lang="ru"><head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap">
 <title>Коммерческое предложение · ШтрафовНет</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -747,18 +748,15 @@
   .signoff .photo {
     width: 32mm;
     height: 38mm;
-    background: var(--surface);
-    border: 1.5px dashed var(--muted-2);
     border-radius: 3mm;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted-2);
-    font-size: 9pt;
-    font-weight: 600;
-    text-align: center;
-    padding: 4mm;
-    line-height: 1.3;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .signoff .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .signoff .signbody {
     display: flex;
@@ -788,6 +786,18 @@
     height: 14mm;
     position: relative;
   }
+  .signoff .sigwell .signature {
+    position: absolute;
+    bottom: -2mm;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60mm;
+    height: 18mm;
+    pointer-events: none;
+  }
+  .signoff .sigwell .signature text {
+    font-family: 'Caveat', 'Brush Script MT', cursive;
+  }
   .signoff .sigwell::before {
     content: "Подпись";
     position: absolute;
@@ -799,16 +809,19 @@
     text-transform: uppercase;
   }
   .signoff .stamp {
-    width: 22mm;
-    height: 22mm;
-    border: 1.5px dashed var(--muted-2);
+    width: 24mm;
+    height: 24mm;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--muted-2);
-    font-weight: 700;
-    font-size: 11pt;
+    overflow: visible;
+    transform: rotate(-8deg);
+  }
+  .signoff .stamp svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   /* ── Cover hero card ── */
@@ -1549,15 +1562,35 @@
 
       <div class="signoff">
         <div class="photo">
-          Фото<br>директора
+          <img src="./ivan.jpeg" alt="Синюков Иван Сергеевич">
         </div>
         <div class="signbody">
           <div style="font-size:9pt;color:var(--muted);font-weight:600;">С уважением,</div>
           <div class="sname">Синюков Иван Сергеевич</div>
           <div class="stitle">Генеральный директор · ИП Синюков И.С.</div>
           <div class="signline">
-            <div class="sigwell"></div>
-            <div class="stamp">М.П.</div>
+            <div class="sigwell">
+              <svg class="signature" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <text x="100" y="42" text-anchor="middle" font-size="40" font-weight="600" fill="#1d3a91" transform="rotate(-6 100 30)">Синюков</text>
+              </svg>
+            </div>
+            <div class="stamp">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <path id="stamp-top-arc" d="M 16 50 A 34 34 0 0 1 84 50" fill="none"/>
+                </defs>
+                <circle cx="50" cy="50" r="46" fill="white" stroke="#0a4b91" stroke-width="2.2" opacity="0.92"/>
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#0a4b91" stroke-width="0.7" opacity="0.92"/>
+                <text font-family="Manrope, sans-serif" font-size="5.2" font-weight="700" fill="#0a4b91" opacity="0.92" letter-spacing="0.3">
+                  <textPath href="#stamp-top-arc" startOffset="50%" text-anchor="middle">
+                    ИП СИНЮКОВ ИВАН СЕРГЕЕВИЧ
+                  </textPath>
+                </text>
+                <text x="50" y="46" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="#0a4b91" opacity="0.92">ИП</text>
+                <text x="50" y="62" text-anchor="middle" font-family="Manrope, sans-serif" font-size="4.6" font-weight="700" fill="#0a4b91" opacity="0.92">ОГРНИП 316366800139954</text>
+                <text x="50" y="72" text-anchor="middle" font-family="Manrope, sans-serif" font-size="4" font-weight="600" fill="#0a4b91" opacity="0.92">г. Воронеж</text>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
