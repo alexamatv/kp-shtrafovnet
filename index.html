@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru"><head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Коммерческое предложение · ШтрафовНет</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -1055,10 +1056,8 @@
             <div class="dl-v">396005, Россия, Воронежская область,<br>Рамонский р-н, с. Ямное, ул. Генерала Сысоева, д. 5, кв. 12</div>
             <div class="dl-k">Подписант</div>
             <div class="dl-v">Синюков Иван Сергеевич, генеральный директор</div>
-            <div class="dl-k">Сайт</div>
-            <div class="dl-v"><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
-            <div class="dl-k" style="border-bottom:none;">Реквизиты</div>
-            <div class="dl-v" style="border-bottom:none;color:var(--muted);font-style:italic;">Реквизиты предоставляются по запросу</div>
+            <div class="dl-k" style="border-bottom:none;">Сайт</div>
+            <div class="dl-v" style="border-bottom:none;"><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
           </div>
         </div>
       </div>
@@ -1573,7 +1572,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 <script>
-(function() {
+function __kpInitManager() {
   window.KP_MANAGERS = [
     {
       id: 'kotov',
@@ -1750,7 +1749,12 @@
   });
 
   window.kpApplyManager = applyManager;
-})();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', __kpInitManager);
+} else {
+  __kpInitManager();
+}
 </script>
 
 <div id="kp-toolbar">
