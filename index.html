@@ -890,6 +890,30 @@
   }
   @media print { .tip { display: none; } }
 
+  a.site-link { color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; }
+  a.site-link:hover { color: var(--green-dark); }
+
+  .qr-box.has-qr { border: none !important; padding: 0 !important; background: transparent !important; }
+  .qr-box.has-qr canvas { width: 22mm !important; height: 22mm !important; display: block; }
+
+  #kp-manager-bar {
+    position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+    background: #fff; border: 1px solid #DCDCDC; border-radius: 999px;
+    padding: 8px 16px 8px 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    z-index: 9998; display: flex; align-items: center; gap: 12px;
+    font-family: 'Manrope', system-ui, sans-serif; font-size: 13px;
+  }
+  #kp-manager-bar label { color: #5D5D5D; font-weight: 600; }
+  #kp-manager-bar select {
+    border: 1px solid #DCDCDC; border-radius: 999px;
+    padding: 6px 14px; font-size: 13px; font-weight: 700;
+    color: #111; background: #F5F5F5; cursor: pointer; font-family: inherit;
+  }
+  #kp-manager-bar select:focus { outline: 2px solid #63C556; }
+  body.pdf-export #kp-manager-bar { display: none !important; }
+  @media print { #kp-manager-bar { display: none !important; } }
+
+
   /* === Editable fields === */
   .field[contenteditable="true"] {
     outline: 1px dashed transparent;
@@ -991,7 +1015,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1024,13 +1048,13 @@
           <div class="addr-head">От кого</div>
           <div class="deflist">
             <div class="dl-k">Организация</div>
-            <div class="dl-v">ООО «ШтрафовНет»<br><span style="color:var(--muted);font-size:9.5pt;">ИНН <span class="field">3661004567</span> · ОГРН <span class="field">1023600000000</span></span></div>
+            <div class="dl-v">ИП Синюков Иван Сергеевич<br><span style="color:var(--muted);font-size:9.5pt;">ИНН 366222501809 · ОГРНИП 316366800139954</span></div>
             <div class="dl-k">Юр. адрес</div>
-            <div class="dl-v">394030, г. Воронеж,<br>ул. Бакунина, д. 47</div>
+            <div class="dl-v">396005, Россия, Воронежская область,<br>Рамонский р-н, с. Ямное, ул. Генерала Сысоева, д. 5, кв. 12</div>
             <div class="dl-k">Подписант</div>
-            <div class="dl-v"><span class="field">Должность · ФИО ген. директора</span></div>
+            <div class="dl-v">Синюков Иван Сергеевич, генеральный директор</div>
             <div class="dl-k" style="border-bottom:none;">Сайт</div>
-            <div class="dl-v" style="border-bottom:none;"><b>shtrafovnet.ru</b></div>
+            <div class="dl-v" style="border-bottom:none;"><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
           </div>
         </div>
       </div>
@@ -1048,7 +1072,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 1 из 8</span>
     </footer>
   </section>
@@ -1060,7 +1084,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1127,7 +1151,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 2 из 8</span>
     </footer>
   </section>
@@ -1139,7 +1163,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1176,10 +1200,24 @@
         <li><b>Выгрузка в Excel:</b> дата нарушения, дата постановления, регзнак, ВУ, статья, сумма, статус оплаты, ссылка на источник.</li>
         <li><b>Разные роли доступа:</b> руководитель, бухгалтер, логист.</li>
       </ul>
+
+      <h3 class="sub">Платные дороги</h3>
+      <p class="note" style="margin:0 0 3mm 0;">
+        Массовая оплата и проверка проездов поддерживается по сетям:
+      </p>
+      <ul class="bul">
+        <li><b>ЦКАД</b> · Центральная кольцевая автомобильная дорога</li>
+        <li><b>М-12</b> «Восток»</li>
+        <li><b>МСД</b> · Московский скоростной диаметр</li>
+        <li><b>М-7 / М-5</b> (Шали–Бавлы) · участок Алексеевское–Альметьевск</li>
+        <li><b>Вознесенский тракт</b></li>
+        <li><b>М-11</b> «Нева»</li>
+        <li><b>A-289</b></li>
+      </ul>
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 3 из 8</span>
     </footer>
   </section>
@@ -1191,7 +1229,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1227,7 +1265,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 4 из 8</span>
     </footer>
   </section>
@@ -1239,7 +1277,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1290,7 +1328,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 5 из 8</span>
     </footer>
   </section>
@@ -1302,7 +1340,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1334,7 +1372,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 6 из 8</span>
     </footer>
   </section>
@@ -1346,7 +1384,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1373,7 +1411,7 @@
           <div class="step-body">
             <h4>Зарегистрироваться самостоятельно</h4>
             <p>
-              Перейдите на сайт <b>shtrafovnet.ru</b>, создайте кабинет
+              Перейдите на сайт <a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a>, создайте кабинет
               и&nbsp;активируйте 7-дневный тестовый период. Регистрация
               занимает несколько минут.
             </p>
@@ -1384,14 +1422,14 @@
       <h3 class="sub" style="margin-top:10mm;">QR-код на страницу регистрации</h3>
       <div class="qr-grid" style="grid-template-columns:repeat(2,1fr);">
         <div class="qr">
-          <div class="qr-box">QR · сайт</div>
+          <div class="qr-box" data-qr="site">QR · сайт</div>
           <div class="qr-lbl">Сайт и регистрация</div>
-          <div class="qr-val">shtrafovnet.ru</div>
+          <div class="qr-val"><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link">www.shtrafovnet.ru</a></div>
         </div>
         <div class="qr">
-          <div class="qr-box">QR · контакт</div>
+          <div class="qr-box" data-qr="manager-telegram">QR · контакт</div>
           <div class="qr-lbl">Прямая связь с менеджером</div>
-          <div class="qr-val"><span class="field">@manager</span></div>
+          <div class="qr-val"><span class="field" data-mgr-key="telegram">@manager</span></div>
         </div>
       </div>
 
@@ -1401,7 +1439,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 7 из 8</span>
     </footer>
   </section>
@@ -1413,7 +1451,7 @@
         <div class="brand-mark"><svg><use href="#logo-h"></use></svg></div>
         <div class="brand-name">ШТРАФОВ<span>НЕТ</span></div>
       </div>
-      <div class="ph-meta"><span>Коммерческое предложение</span><b>shtrafovnet.ru</b></div>
+      <div class="ph-meta"><span>Коммерческое предложение</span><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link"><b>www.shtrafovnet.ru</b></a></div>
     </header>
 
     <div class="pc">
@@ -1431,27 +1469,27 @@
         <tbody>
           <tr>
             <td class="ch">Телефон</td>
-            <td class="cv">+7 (499) 286-87-07</td>
+            <td class="cv"><span class="field" data-mgr-key="phone">+7 (499) 286-87-07</span></td>
             <td class="cw">Звонок руководителю проекта в рабочее время.</td>
           </tr>
           <tr class="zebra">
             <td class="ch">E-mail</td>
-            <td class="cv">hello@shtrafovnet.ru</td>
+            <td class="cv"><span class="field" data-mgr-key="email">hello@shtrafovnet.ru</span></td>
             <td class="cw">Документы, запрос коммерческих условий, договор.</td>
           </tr>
           <tr>
             <td class="ch">Сайт</td>
-            <td class="cv">shtrafovnet.ru</td>
+            <td class="cv"><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link">www.shtrafovnet.ru</a></td>
             <td class="cw">Самостоятельная регистрация и тестовый период.</td>
           </tr>
           <tr class="zebra">
             <td class="ch">Telegram&nbsp;/ WhatsApp</td>
-            <td class="cv"><span class="field">@manager или общий аккаунт</span></td>
+            <td class="cv"><span class="field" data-mgr-key="telegram">@manager</span></td>
             <td class="cw">Быстрые вопросы и пересылка документов.</td>
           </tr>
           <tr>
             <td class="ch">Персональный менеджер</td>
-            <td class="cv"><span class="field">ФИО · должность · телефон</span></td>
+            <td class="cv"><span class="field" data-mgr-key="name">ФИО менеджера</span></td>
             <td class="cw">Закреплённый менеджер по вашему договору.</td>
           </tr>
         </tbody>
@@ -1460,19 +1498,19 @@
       <h3 class="sub" style="margin-top:5mm;">QR-коды для быстрого доступа</h3>
       <div class="qr-grid">
         <div class="qr">
-          <div class="qr-box">QR · сайт</div>
+          <div class="qr-box" data-qr="site">QR · сайт</div>
           <div class="qr-lbl">Сайт</div>
-          <div class="qr-val">shtrafovnet.ru</div>
+          <div class="qr-val"><a href="https://www.shtrafovnet.ru" target="_blank" rel="noopener" class="site-link">www.shtrafovnet.ru</a></div>
         </div>
         <div class="qr">
-          <div class="qr-box">QR · звонок</div>
-          <div class="qr-lbl">Звонок</div>
-          <div class="qr-val">+7 (499) 286-87-07</div>
+          <div class="qr-box" data-qr="manager-phone">QR · звонок</div>
+          <div class="qr-lbl">Звонок менеджеру</div>
+          <div class="qr-val"><span data-mgr-key="phone-display">+7 (499) 286-87-07</span></div>
         </div>
         <div class="qr">
-          <div class="qr-box">QR · письмо</div>
-          <div class="qr-lbl">Письмо</div>
-          <div class="qr-val">hello@shtrafovnet.ru</div>
+          <div class="qr-box" data-qr="manager-email">QR · письмо</div>
+          <div class="qr-lbl">Письмо менеджеру</div>
+          <div class="qr-val"><span data-mgr-key="email-display">hello@shtrafovnet.ru</span></div>
         </div>
       </div>
 
@@ -1482,8 +1520,8 @@
         </div>
         <div class="signbody">
           <div style="font-size:9pt;color:var(--muted);font-weight:600;">С уважением,</div>
-          <div class="sname"><span class="field">ФИО Генерального директора</span></div>
-          <div class="stitle">Генеральный директор · ООО «ШтрафовНет»</div>
+          <div class="sname">Синюков Иван Сергеевич</div>
+          <div class="stitle">Генеральный директор · ИП Синюков И.С.</div>
           <div class="signline">
             <div class="sigwell"></div>
             <div class="stamp">М.П.</div>
@@ -1493,7 +1531,7 @@
     </div>
 
     <footer class="pf">
-      <span>ООО «ШтрафовНет» · 394030, Воронеж, ул. Бакунина, 47 · +7 (499) 286-87-07</span>
+      <span>ИП Синюков Иван Сергеевич · 396005, с. Ямное, ул. Ген. Сысоева, д. 5, кв. 12 · +7 (499) 286-87-07</span>
       <span class="pf-num">стр. 8 из 8</span>
     </footer>
   </section>
@@ -1502,6 +1540,101 @@
 
 
 
+
+
+<div id="kp-manager-bar">
+  <label for="kp-mgr-select">Менеджер:</label>
+  <select id="kp-mgr-select"><option value="">— не выбран —</option></select>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+(function() {
+  window.KP_MANAGERS = [
+    { id: 'mgr1', name: 'Иванов Иван Иванович',     position: 'Менеджер по работе с клиентами', phone: '+7 (499) 286-87-07, доб. 101', email: 'ivanov@shtrafovnet.ru',     telegram: '@ivanov_shn',     qrData: 'https://t.me/ivanov_shn' },
+    { id: 'mgr2', name: 'Петрова Анна Сергеевна',   position: 'Старший менеджер',               phone: '+7 (499) 286-87-07, доб. 102', email: 'petrova@shtrafovnet.ru',    telegram: '@petrova_shn',    qrData: 'https://t.me/petrova_shn' },
+    { id: 'mgr3', name: 'Сидоров Алексей Петрович', position: 'Менеджер ключевых клиентов',     phone: '+7 (499) 286-87-07, доб. 103', email: 'sidorov@shtrafovnet.ru',    telegram: '@sidorov_shn',    qrData: 'https://t.me/sidorov_shn' },
+    { id: 'mgr4', name: 'Кузнецова Елена Викторовна', position: 'Менеджер крупных автопарков', phone: '+7 (499) 286-87-07, доб. 104', email: 'kuznetsova@shtrafovnet.ru', telegram: '@kuznetsova_shn', qrData: 'https://t.me/kuznetsova_shn' }
+  ];
+
+  var SITE_URL = 'https://www.shtrafovnet.ru';
+
+  function renderQR(box, text) {
+    if (!text || typeof QRCode === 'undefined') return;
+    while (box.firstChild) box.removeChild(box.firstChild);
+    box.classList.add('has-qr');
+    QRCode.toCanvas(text, { width: 220, margin: 1, errorCorrectionLevel: 'M' }, function(err, canvas) {
+      if (err) { console.error('QR err', err); return; }
+      box.appendChild(canvas);
+    });
+  }
+
+  var select = document.getElementById('kp-mgr-select');
+  window.KP_MANAGERS.forEach(function(m) {
+    var opt = document.createElement('option');
+    opt.value = m.id;
+    opt.textContent = m.name;
+    select.appendChild(opt);
+  });
+
+  var STORAGE_KEY_MGR = 'kp_selected_manager_v1';
+  var savedMgr = '';
+  try { savedMgr = localStorage.getItem(STORAGE_KEY_MGR) || ''; } catch(e) {}
+  if (savedMgr) select.value = savedMgr;
+
+  function applyManager(mgrId) {
+    var mgr = window.KP_MANAGERS.find(function(m) { return m.id === mgrId; });
+    document.querySelectorAll('[data-mgr-key]').forEach(function(el) {
+      var key = el.dataset.mgrKey;
+      if (!mgr) {
+        if (el.dataset.kpPlaceholder) {
+          el.textContent = el.dataset.kpPlaceholder;
+          el.classList.add('kp-placeholder');
+        }
+        return;
+      }
+      var val = '';
+      if (key === 'name') val = mgr.name + ' · ' + mgr.position;
+      else if (key === 'phone' || key === 'phone-display') val = mgr.phone;
+      else if (key === 'email' || key === 'email-display') val = mgr.email;
+      else if (key === 'telegram') val = mgr.telegram;
+      if (val) {
+        el.textContent = val;
+        el.classList.remove('kp-placeholder');
+      }
+    });
+
+    document.querySelectorAll('[data-qr]').forEach(function(box) {
+      var type = box.dataset.qr;
+      if (type === 'site') {
+        renderQR(box, SITE_URL);
+      } else if (mgr) {
+        if (type === 'manager-telegram') renderQR(box, mgr.qrData);
+        else if (type === 'manager-phone') renderQR(box, 'tel:' + mgr.phone.replace(/[^+0-9]/g, ''));
+        else if (type === 'manager-email') renderQR(box, 'mailto:' + mgr.email);
+      } else {
+        box.classList.remove('has-qr');
+        while (box.firstChild) box.removeChild(box.firstChild);
+        if (type === 'manager-telegram') box.textContent = 'QR · контакт';
+        else if (type === 'manager-phone') box.textContent = 'QR · звонок';
+        else if (type === 'manager-email') box.textContent = 'QR · письмо';
+      }
+    });
+
+    if (window.kpSaveFields) window.kpSaveFields();
+  }
+
+  setTimeout(function() { applyManager(savedMgr); }, 200);
+
+  select.addEventListener('change', function() {
+    var val = select.value;
+    applyManager(val);
+    try { localStorage.setItem(STORAGE_KEY_MGR, val); } catch(e) {}
+  });
+
+  window.kpApplyManager = applyManager;
+})();
+</script>
 
 <div id="kp-toolbar">
   <button id="kp-btn-pdf" class="primary" title="Скачать как PDF">
@@ -1566,6 +1699,7 @@
     });
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
   }
+  window.kpSaveFields = save;
 
   // === Reset button ===
   document.getElementById('kp-btn-reset').addEventListener('click', function() {
