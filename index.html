@@ -1006,6 +1006,54 @@
     outline: none !important;
     background: inherit !important;
   }
+
+  /* === Component styles used by partner / dealer КП === */
+  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin: 5mm 0; }
+  .feat { background: var(--surface-2); border: 1px solid var(--line); border-radius: 5mm; padding: 5mm 6mm; display: flex; flex-direction: column; }
+  .feat .ft-ic { width: 10mm; height: 10mm; border-radius: 3mm; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; margin-bottom: 3.5mm; }
+  .feat .ft-ic svg { width: 5.4mm; height: 5.4mm; display: block; }
+  .feat h4 { font-size: 11.5pt; font-weight: 700; margin: 0 0 1.5mm 0; color: var(--ink); }
+  .feat p { font-size: 9.5pt; color: var(--muted); line-height: 1.4; margin: 0; }
+  .tic { width: 4mm; height: 4mm; display: inline-block; vertical-align: -0.9mm; margin-right: 2.5mm; color: var(--green-dark); }
+  .ch-cell { display: inline-flex; align-items: center; }
+  .ch-cell svg { width: 4mm; height: 4mm; margin-right: 2.5mm; color: var(--green-dark); flex: none; }
+  .callout { background: var(--green-soft); border: 1px solid var(--green-mint); border-radius: 6mm; padding: 6mm 7mm; margin: 5mm 0; }
+  .callout.ico { display: grid; grid-template-columns: 12mm 1fr; gap: 5mm; align-items: center; }
+  .callout .co-ic { width: 12mm; height: 12mm; border-radius: 4mm; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; }
+  .callout .co-ic svg { width: 6mm; height: 6mm; }
+  .callout .co-big { font-size: 16pt; font-weight: 800; color: var(--green-dark); line-height: 1.1; margin-bottom: 2mm; }
+  .callout p { margin: 0; font-size: 10pt; color: var(--ink-2); }
+  .price-cell.big .pcv { font-size: 26pt; color: var(--green-dark); }
+  .model-card { border: 1.5px solid var(--line); border-radius: 6mm; padding: 6mm 7mm; margin-bottom: 5mm; }
+  .model-card.accent { border-color: var(--green); background: var(--surface-2); }
+  .model-card .mc-tag { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px; background: var(--green); color: var(--white); font-size: 8pt; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3mm; }
+  .model-card .mc-head { display: flex; align-items: center; gap: 4mm; margin-bottom: 2mm; }
+  .model-card .mc-head h3 { margin: 0; }
+  .model-card .mc-ic { width: 11mm; height: 11mm; border-radius: 3mm; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; flex: none; }
+  .model-card .mc-ic svg { width: 6mm; height: 6mm; }
+  .model-card h3 { font-size: 15pt; font-weight: 800; margin: 0 0 2mm 0; color: var(--ink); letter-spacing: -0.01em; }
+  .model-card p { font-size: 10pt; color: var(--ink-2); margin: 0 0 2mm 0; }
+
+  /* === КП type switching === */
+  .doc { display: none; }
+  .doc.kp-active { display: flex; }
+  #kp-typebar {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 9999; display: flex; gap: 4px;
+    background: #fff; border: 1px solid #DCDCDC; border-radius: 999px;
+    padding: 5px; box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    font-family: 'Manrope', system-ui, sans-serif;
+  }
+  #kp-typebar button {
+    border: none; background: transparent; cursor: pointer;
+    border-radius: 999px; padding: 8px 18px;
+    font-size: 13px; font-weight: 700; color: #5D5D5D;
+    font-family: inherit; transition: background-color .12s, color .12s;
+  }
+  #kp-typebar button:hover { color: #111; }
+  #kp-typebar button.active { background: #63C556; color: #fff; }
+  body.pdf-export #kp-typebar { display: none !important; }
+  @media print { #kp-typebar { display: none !important; } }
 </style>
 </head>
 <body>
@@ -1018,7 +1066,7 @@
   </symbol>
 </svg>
 
-<div class="doc">
+<div class="doc kp-active" data-kp="main">
 
   <!-- ════════════════ PAGE 1 — COVER ════════════════ -->
   <section class="page">
@@ -1591,6 +1639,357 @@
 
 </div>
 
+<div class="doc" data-kp="partners">
+
+  <!-- ════════ PAGE 1 — COVER ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Партнёрская программа</span><b>partners.shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="cover-hero">
+        <div class="ce-eyebrow">ШтрафовНет · Партнёрская программа</div>
+        <h1 class="ce-title">Приводите клиентов,<br/>получайте <span class="hl">доход каждый месяц</span></h1>
+        <p class="ce-sub">Рекомендуйте сервис мониторинга и оплаты штрафов компаниям с автопарками. Платим процент с каждого платежа клиента, пока он пользуется сервисом. Без вложений и без рисков для вас.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="price-cell big accent"><div class="pcl">Ваше вознаграждение</div><div class="pcv"><span class="field">15&nbsp;%</span></div><p class="note" style="margin-top:2mm;">с каждого платежа клиента, ежемесячно, пока клиент активен</p></div>
+        <div class="price-cell"><div class="pcl">Как выводите</div><div class="pcv">По запросу</div><p class="note" style="margin-top:2mm;">с баланса личного кабинета на карту или счёт, в любой момент</p></div>
+      </div>
+      <div class="addr-grid" style="margin-top:5mm;">
+        <div class="addr-card accent">
+          <div class="addr-head">Кому адресовано</div>
+          <div class="deflist" style="border-top-color:var(--green-mint);">
+            <div class="dl-k">Партнёр</div><div class="dl-v" style="border-bottom-color:var(--green-mint);"><span class="field">Название компании / ФИО</span></div>
+            <div class="dl-k" style="border-bottom:none;">Контакт</div><div class="dl-v" style="border-bottom:none;"><span class="field">ФИО · телефон</span></div>
+          </div>
+        </div>
+        <div class="addr-card">
+          <div class="addr-head">От кого</div>
+          <div class="deflist">
+            <div class="dl-k">Организация</div><div class="dl-v">ООО «ШтрафовНет»</div>
+            <div class="dl-k">Сайт</div><div class="dl-v"><b>shtrafovnet.ru</b></div>
+            <div class="dl-k" style="border-bottom:none;">Дата</div><div class="dl-v" style="border-bottom:none;"><span class="field">ДД.ММ.2026</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 1 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 2 — HOW IT WORKS ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Партнёрская программа</span><b>partners.shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 1</div>
+      <h2 class="section">Как это работает</h2>
+      <p class="lead">Вы рекомендуете ШтрафовНет компаниям с автопарками. Мы подключаем клиента, ведём его и обслуживаем. Вы получаете процент с его платежей, пока он остаётся с нами.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Получаете партнёрскую ссылку</h4><p>Регистрируетесь в партнёрском кабинете за пару минут. За вами закрепляется персональная партнёрская ссылка.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Приводите клиента</h4><p>Передаёте ссылку лицу, принимающему решение в компании с автопарком. После активации клиент появляется в вашем кабинете как реферал и закрепляется за вами.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Получаете вознаграждение каждый месяц</h4><p>Как только клиент начинает платить, вам капает процент. И так каждый месяц, пока клиент пользуется сервисом.</p></div></div>
+      </div>
+      <h3 class="sub">Кому подходит программа</h3>
+      <div class="feat-grid">
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h4>Бухгалтерские и юр. компании</h4><p>Ведёте бизнес-клиентов с транспортом, рекомендуете им полезный сервис.</p></div>
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><h4>Автосервисы, страховые, лизинг</h4><p>Работаете с автопарками и владельцами ТС каждый день.</p></div>
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h4>1С-франчайзи и IT-интеграторы</h4><p>Внедряете учётные системы компаниям с парком техники.</p></div>
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h4>Консультанты и блогеры</h4><p>Есть аудитория предпринимателей и автовладельцев-юрлиц.</p></div>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 2 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 3 — HOW MUCH ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Партнёрская программа</span><b>partners.shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 2</div>
+      <h2 class="section">Сколько вы зарабатываете</h2>
+      <p class="lead">Вознаграждение начисляется не один раз, а ежемесячно. Один приведённый клиент приносит доход год за годом.</p>
+      <div class="callout ico">
+        <div class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div>
+          <div class="co-big"><span class="field">15&nbsp;%</span> с каждого платежа клиента, ежемесячно</div>
+          <p>Процент берётся с абонентской платы клиента за мониторинг штрафов. Начисляется весь срок, пока клиент пользуется сервисом. Размер процента фиксируется в партнёрском договоре.</p>
+        </div>
+      </div>
+      <h3 class="sub">Пример расчёта на год</h3>
+      <table class="t" style="margin-top:2mm;">
+        <thead><tr><th>Клиент</th><th class="num">Платит в месяц</th><th class="num">Ваш доход / мес</th><th class="num">Ваш доход / год</th></tr></thead>
+        <tbody>
+          <tr><td>Парк 50 ТС</td><td class="num">5 500 ₽</td><td class="num">825 ₽</td><td class="num">9 900 ₽</td></tr>
+          <tr class="zebra"><td>Парк 200 ТС</td><td class="num">13 000 ₽</td><td class="num">1 950 ₽</td><td class="num">23 400 ₽</td></tr>
+          <tr><td>Парк 500 ТС</td><td class="num">21 000 ₽</td><td class="num">3 150 ₽</td><td class="num">37 800 ₽</td></tr>
+          <tr class="totals"><td>10 клиентов среднего размера</td><td class="num">—</td><td class="num">19 500 ₽</td><td class="num">234 000 ₽</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:3mm;">Расчёт по действующей тарифной сетке сервиса и ставке вознаграждения 15&nbsp;%. Цифры ориентировочные, итоговые условия фиксируются в договоре.</p>
+      <h3 class="sub">Почему это выгодно</h3>
+      <ul class="bul">
+        <li><b>Пассивный доход.</b> Привели клиента один раз, получаете каждый месяц.</li>
+        <li><b>Ноль вложений.</b> Не нужно ничего покупать, держать на складе или вкладывать в рекламу.</li>
+        <li><b>Растущая база.</b> Чем больше клиентов привели, тем выше ежемесячный доход.</li>
+        <li><b>Лёгкая продажа.</b> Сервис экономит клиенту деньги и время, его легко рекомендовать.</li>
+      </ul>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 3 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 4 — TERMS ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Партнёрская программа</span><b>partners.shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 3</div>
+      <h2 class="section">Условия и поддержка</h2>
+      <table class="t" style="margin-top:2mm;">
+        <tbody>
+          <tr><td class="label-cell" style="width:62mm;">Вознаграждение</td><td><b><span class="field">15&nbsp;%</span></b> с ежемесячного платежа клиента</td></tr>
+          <tr class="zebra"><td class="label-cell">Срок начисления</td><td>Пожизненно, пока клиент активен</td></tr>
+          <tr><td class="label-cell">Выплаты</td><td>По запросу партнёра, с баланса личного кабинета на карту или счёт</td></tr>
+          <tr class="zebra"><td class="label-cell">Закрепление клиента</td><td>За партнёром по партнёрской ссылке</td></tr>
+          <tr><td class="label-cell">Документы</td><td>Партнёрский договор, акты через ЭДО</td></tr>
+          <tr class="totals"><td class="label-cell" style="color:var(--ink);">Старт</td><td>Бесплатно, без вложений и обязательств по объёму</td></tr>
+        </tbody>
+      </table>
+      <h3 class="sub">Что вы получаете от нас</h3>
+      <ul class="bul">
+        <li><b>Личный кабинет партнёра:</b> каждый приведённый клиент появляется как ваш реферал, со статистикой по платежам, начислениям и балансом к выводу в реальном времени.</li>
+        <li><b>Персонального менеджера,</b> который помогает с первыми сделками и отвечает на вопросы клиентов.</li>
+        <li><b>Готовые материалы:</b> презентация, тексты, баннеры и это коммерческое предложение под вашу рассылку.</li>
+        <li><b>Сопровождение клиента нашей стороной:</b> подключение, обучение, техподдержка остаются на нас.</li>
+      </ul>
+      <div class="callout ico" style="margin-top:5mm;">
+        <div class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+        <div>
+          <div class="co-big">Тест-драйв для клиента: 7 дней бесплатно</div>
+          <p>Клиенту проще согласиться: он сначала пробует сервис без оплаты, а вы получаете вознаграждение, как только он переходит на платный тариф.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 4 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 5 — START + CONTACTS ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Партнёрская программа</span><b>partners.shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 4</div>
+      <h2 class="section">Как начать</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Оставьте заявку</h4><p>Позвоните, напишите на e-mail или в мессенджер. Мы пришлём партнёрский договор и доступ в кабинет.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Получите ссылку и материалы</h4><p>За вами закрепляется персональная партнёрская ссылка. Выдаём готовые материалы для клиентов.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Приводите клиентов и получайте доход</h4><p>Первое вознаграждение приходит уже в месяц, когда клиент начал платить.</p></div></div>
+      </div>
+      <h3 class="sub" style="margin-top:8mm;">Контакты</h3>
+      <table class="t">
+        <thead><tr><th>Канал</th><th>Контакт</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;width:55mm;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Телефон</span></td><td><span class="field" data-mgr-key="phonePrimary">+7 (499) 286-87-07</span></td></tr>
+          <tr class="zebra"><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>E-mail</span></td><td><span class="field" data-mgr-key="email">partners@shtrafovnet.ru</span></td></tr>
+          <tr><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт программы</span></td><td>partners.shtrafovnet.ru</td></tr>
+          <tr class="zebra"><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Telegram / WhatsApp</span></td><td><span class="field" data-mgr-key="telegram">@manager</span></td></tr>
+          <tr><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Менеджер</span></td><td><span class="field" data-mgr-key="name">ФИО менеджера</span></td></tr>
+        </tbody>
+      </table>
+      <div class="callout ico" style="margin-top:6mm;">
+        <div class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div>
+          <div class="co-big">Начните зарабатывать на рекомендациях уже в этом месяце</div>
+          <p>Оставьте заявку сегодня, и мы подключим вас к партнёрской программе в течение рабочего дня.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 5 из 5</span></footer>
+  </section>
+
+</div>
+
+<div class="doc" data-kp="dealers">
+
+  <!-- ════════ PAGE 1 — COVER ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Дилерская программа</span><b>shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="cover-hero">
+        <div class="ce-eyebrow">ШтрафовНет · Дилерская программа</div>
+        <h1 class="ce-title">Продавайте проверку штрафов <span class="hl">как свою услугу</span></h1>
+        <p class="ce-sub">Готовый сервис мониторинга и оплаты штрафов для встраивания в ваш продукт. Даём дилерскую скидку 15% на тарифы, а розничную цену вы ставите сами. Под вашим брендом или через дилерский кабинет у нас. Инфраструктура, источники данных и поддержка, наши.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="price-cell accent"><div class="pcl">Дилерская скидка</div><div class="pcv">−<span class="field">15&nbsp;%</span> на тарифы</div><p class="note" style="margin-top:2mm;">розничную цену вы определяете сами, разница ваша маржа</p></div>
+        <div class="price-cell accent"><div class="pcl">Как продаёте</div><div class="pcv">Свой бренд или наш кабинет</div><p class="note" style="margin-top:2mm;">white-label с API или дилерский кабинет у нас</p></div>
+      </div>
+      <div class="addr-grid" style="margin-top:5mm;">
+        <div class="addr-card accent">
+          <div class="addr-head">Кому адресовано</div>
+          <div class="deflist" style="border-top-color:var(--green-mint);">
+            <div class="dl-k">Дилер</div><div class="dl-v" style="border-bottom-color:var(--green-mint);"><span class="field">Название компании</span></div>
+            <div class="dl-k" style="border-bottom:none;">Контакт</div><div class="dl-v" style="border-bottom:none;"><span class="field">ФИО · должность · телефон</span></div>
+          </div>
+        </div>
+        <div class="addr-card">
+          <div class="addr-head">От кого</div>
+          <div class="deflist">
+            <div class="dl-k">Организация</div><div class="dl-v">ООО «ШтрафовНет»</div>
+            <div class="dl-k">Сайт</div><div class="dl-v"><b>shtrafovnet.ru</b></div>
+            <div class="dl-k" style="border-bottom:none;">Дата</div><div class="dl-v" style="border-bottom:none;"><span class="field">ДД.ММ.2026</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 1 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 2 — WHO & WHY ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Дилерская программа</span><b>shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 1</div>
+      <h2 class="section">Для кого и зачем</h2>
+      <p class="lead">Если у вас уже есть клиенты с транспортом, проверка и оплата штрафов это логичная допуслуга. Вы расширяете продукт и зарабатываете, а разработку и данные берём на себя мы.</p>
+      <h3 class="sub">Кому подходит</h3>
+      <div class="feat-grid">
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Телематика и мониторинг ТС</h4><p>Добавляете штрафы в личный кабинет клиента как новый модуль.</p></div>
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>TMS и логистические платформы</h4><p>Контроль штрафов внутри системы управления автопарком.</p></div>
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h4>1С-франчайзи и IT-интеграторы</h4><p>Продаёте сервис вместе с внедрением учётных систем.</p></div>
+        <div class="feat"><div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Страховые, лизинг, каршеринг</h4><p>Проверка ТС и водителей встроена в ваш сервис.</p></div>
+      </div>
+      <h3 class="sub">Что вы получаете как дилер</h3>
+      <ul class="bul">
+        <li><b>Готовый продукт без разработки.</b> Источники данных, оплата и отчётность уже работают.</li>
+        <li><b>5 официальных источников штрафов:</b> ГИБДД, ГИС ГМП, МАДИ, АМПП, ФССП.</li>
+        <li><b>Дилерскую скидку 15%</b> на тарифы, а розничную цену для клиента ставите сами.</li>
+        <li><b>Техническую и юридическую поддержку:</b> обработка данных по 152-ФЗ, реестр Роскомнадзора, ЭДО.</li>
+      </ul>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 2 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 3 — TWO MODELS ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Дилерская программа</span><b>shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 2</div>
+      <h2 class="section">Две модели на выбор</h2>
+      <div class="model-card accent">
+        <div class="mc-tag">Модель А</div>
+        <div class="mc-head"><div class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div><h3>Дилерский кабинет у нас</h3></div>
+        <p>Вы работаете в дилерском кабинете ШтрафовНет, получаете скидку 15% на все тарифы и продаёте клиентам по своей цене. Разница в цене ваша маржа.</p>
+        <ul class="bul" style="margin-top:3mm;">
+          <li>Фиксированная дилерская скидка 15% на тарифы, без привязки к объёму.</li>
+          <li>Розничную цену для своих клиентов вы определяете сами.</li>
+          <li>Быстрый старт без технической интеграции.</li>
+        </ul>
+      </div>
+      <div class="model-card dark">
+        <div class="mc-tag" style="background:var(--ink-2);">Модель Б</div>
+        <div class="mc-head"><div class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>White-label под вашим брендом</h3></div>
+        <p>Тот же сервис, но под вашим брендом и встроенный в ваш продукт через API. Клиент видит ваш интерфейс. Условие то же: дилерская скидка 15% на тарифы.</p>
+        <ul class="bul" style="margin-top:3mm;">
+          <li>Ваш логотип, ваш домен, ваш личный кабинет для клиентов.</li>
+          <li>Интеграция через API: мониторинг ТС и проверки в вашем сервисе.</li>
+          <li>Документация API, тестовый контур, совместимость с 1С, SAP, TMS.</li>
+        </ul>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 3 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 4 — PRICING ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Дилерская программа</span><b>shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 3</div>
+      <h2 class="section">Условия и цены</h2>
+      <div class="callout ico">
+        <div class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+        <div>
+          <div class="co-big">Дилерская скидка <span class="field">15&nbsp;%</span> на все тарифы</div>
+          <p>Единая скидка для дилеров, без привязки к объёму. Розничную цену для своих клиентов вы определяете сами, разница в цене, ваша маржа.</p>
+        </div>
+      </div>
+      <h3 class="sub">Что входит в дилерские условия</h3>
+      <table class="t" style="margin-top:2mm;">
+        <tbody>
+          <tr><td class="label-cell" style="width:62mm;">Скидка на тарифы</td><td><b><span class="field">15&nbsp;%</span></b> от розничной цены сервиса</td></tr>
+          <tr class="zebra"><td class="label-cell">Розничная цена клиенту</td><td>устанавливаете самостоятельно</td></tr>
+          <tr><td class="label-cell">Мониторинг штрафов</td><td>тариф со скидкой 15%</td></tr>
+          <tr class="zebra"><td class="label-cell">Доп. проверки (ОСАГО, ВУ, ПТС…)</td><td>тариф со скидкой 15%</td></tr>
+          <tr><td class="label-cell">Способ продажи</td><td>дилерский кабинет у нас или white-label под вашим брендом</td></tr>
+          <tr class="zebra"><td class="label-cell">Доступ к API (для white-label)</td><td>включён, документация и тестовый контур</td></tr>
+          <tr class="totals"><td class="label-cell" style="color:var(--ink);">Документы</td><td>Дилерский договор, акты через ЭДО</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:3mm;">Розничные тарифы, от которых считается скидка, приведены в основном коммерческом предложении сервиса. Подключение white-label и брендирование рассчитываем под ваш сценарий после короткого брифа.</p>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 4 из 5</span></footer>
+  </section>
+
+  <!-- ════════ PAGE 5 — START + CONTACTS ════════ -->
+  <section class="page">
+    <header class="ph">
+      <div class="brand"><div class="brand-mark"><svg><use href="#logo-h"></use></svg></div><div class="brand-name">ШТРАФОВ<span>НЕТ</span></div></div>
+      <div class="ph-meta"><span>Дилерская программа</span><b>shtrafovnet.ru</b></div>
+    </header>
+    <div class="pc">
+      <div class="eyebrow">Раздел 4</div>
+      <h2 class="section">Как начать</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Короткий бриф</h4><p>Рассказываете, кто ваши клиенты и как продаёте: через дилерский кабинет у нас или white-label под своим брендом.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Договор и доступы</h4><p>Подписываем дилерский договор со скидкой 15%. Для white-label выдаём доступ к API, тестовому контуру и документации.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Запуск и продажи</h4><p>Подключаем кабинет или брендирование. Вы ставите свою цену и продаёте, мы держим инфраструктуру.</p></div></div>
+      </div>
+      <h3 class="sub" style="margin-top:7mm;">Контакты</h3>
+      <table class="t">
+        <thead><tr><th>Канал</th><th>Контакт</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;width:55mm;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Телефон</span></td><td><span class="field" data-mgr-key="phonePrimary">+7 (499) 286-87-07</span></td></tr>
+          <tr class="zebra"><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>E-mail</span></td><td><span class="field" data-mgr-key="email">partners@shtrafovnet.ru</span></td></tr>
+          <tr><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</span></td><td>shtrafovnet.ru</td></tr>
+          <tr class="zebra"><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Telegram / WhatsApp</span></td><td><span class="field" data-mgr-key="telegram">@manager</span></td></tr>
+          <tr><td style="font-weight:700;"><span class="ch-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Менеджер по партнёрам</span></td><td><span class="field" data-mgr-key="name">ФИО менеджера</span></td></tr>
+        </tbody>
+      </table>
+      <div class="callout ico" style="margin-top:6mm;">
+        <div class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div>
+          <div class="co-big">Расширьте свой продукт без разработки</div>
+          <p>Оставьте заявку, и в течение рабочего дня мы рассчитаем условия под вашу модель.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="pf"><span>ООО «ШтрафовНет» · Воронеж · +7 (499) 286-87-07</span><span class="pf-num">стр. 5 из 5</span></footer>
+  </section>
+
+</div>
+
+
 
 
 
@@ -1841,6 +2240,40 @@ if (document.readyState === 'loading') {
 }
 </script>
 
+<div id="kp-typebar">
+  <button type="button" data-kp-type="main" class="active">Основное</button>
+  <button type="button" data-kp-type="partners">Для партнёров</button>
+  <button type="button" data-kp-type="dealers">Для дилеров</button>
+</div>
+
+<script>
+(function() {
+  // === КП type switcher — always defaults to «Основное» on open (not persisted) ===
+  function setType(type) {
+    var docs = document.querySelectorAll('.doc[data-kp]');
+    var found = false;
+    docs.forEach(function(d) {
+      var on = d.dataset.kp === type;
+      d.classList.toggle('kp-active', on);
+      if (on) found = true;
+    });
+    if (!found) { // fallback to main
+      type = 'main';
+      docs.forEach(function(d) { d.classList.toggle('kp-active', d.dataset.kp === 'main'); });
+    }
+    document.querySelectorAll('#kp-typebar button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.kpType === type);
+    });
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('#kp-typebar button').forEach(function(b) {
+    b.addEventListener('click', function() { setType(b.dataset.kpType); });
+  });
+  window.kpSetType = setType;
+  setType('main');
+})();
+</script>
+
 <div id="kp-toolbar">
   <div id="kp-manager-bar">
     <label for="kp-mgr-select">Менеджер:</label>
@@ -1935,7 +2368,8 @@ if (document.readyState === 'loading') {
       var jsPDF = window.jspdf.jsPDF;
       var pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
       var pageW = 210, pageH = 297;
-      var pages = document.querySelectorAll('.page');
+      var activeDoc = document.querySelector('.doc.kp-active') || document;
+      var pages = activeDoc.querySelectorAll('.page');
 
       for (var i = 0; i < pages.length; i++) {
         overlayMsg.textContent = 'Готовим страницу ' + (i + 1) + ' из ' + pages.length + '…';
@@ -1957,15 +2391,17 @@ if (document.readyState === 'loading') {
 
       overlayMsg.textContent = 'Сохраняем файл…';
       // Build a sensible filename
-      var firstField = document.querySelector('.field');
+      var firstField = activeDoc.querySelector('.field');
       var company = '';
       if (firstField && !firstField.classList.contains('kp-placeholder')) {
         company = firstField.textContent.trim();
       }
+      var typeLabels = { main: '', partners: 'Partners', dealers: 'Dealers' };
+      var typeTag = typeLabels[activeDoc.dataset ? activeDoc.dataset.kp : ''] || '';
       var today = new Date();
       var ymd = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
       var safe = (company || 'klient').replace(/[/\?%*:|"<>]/g, '').replace(/s+/g, '_').slice(0, 60);
-      pdf.save('KP_ShtrafovNet_' + safe + '_' + ymd + '.pdf');
+      pdf.save('KP_ShtrafovNet_' + (typeTag ? typeTag + '_' : '') + safe + '_' + ymd + '.pdf');
     } catch (err) {
       alert('Не удалось создать PDF: ' + (err && err.message ? err.message : err));
       console.error(err);
